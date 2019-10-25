@@ -1,5 +1,6 @@
 package com.demoforimpel.service.impl;
 
+import com.demoforimpel.data.AccountInfo;
 import com.demoforimpel.data.LoginInfo;
 import com.demoforimpel.domain.Authority;
 import com.demoforimpel.domain.User;
@@ -38,7 +39,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String login(LoginInfo loginInfo) {
+    public AccountInfo login(LoginInfo loginInfo) {
         return authenticationService.authenticate(loginInfo);
     }
 

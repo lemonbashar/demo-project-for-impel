@@ -41,6 +41,8 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and().authorizeRequests()
+                .mvcMatchers(HttpMethod.POST,"/api/account-controller/create/**").permitAll()
+                .mvcMatchers(HttpMethod.POST,"/api/account-controller/login/**").permitAll()
                 .anyRequest().authenticated()
                 .and().apply(securityConfigurerAdapter);
     }
