@@ -16,6 +16,12 @@ public class Authority implements Serializable {
     @Column(unique = true, name = "AUTHORITY_NAME")
     private String name;
 
+    public Authority() {
+    }
+
+    public Authority(@NotNull String name) {
+        this.name = name;
+    }
 
     public String getName() {
         return name;

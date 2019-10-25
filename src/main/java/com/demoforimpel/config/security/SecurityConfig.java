@@ -43,7 +43,6 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
                 .and().authorizeRequests()
                 .anyRequest().authenticated()
                 .and().apply(securityConfigurerAdapter);
-
     }
 
     @Bean

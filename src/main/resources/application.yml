@@ -7,3 +7,6 @@ application:
     driver: org.postgresql.Driver
     hbm2-ddl-auto: update
     dialect: org.hibernate.dialect.PostgreSQL82Dialect
+
+server:
+  port: 2323
