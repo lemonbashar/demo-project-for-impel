@@ -1,12 +1,15 @@
 package com.demoforimpel.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "APP_USER")
-public class User {
+public class User implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "APP_USER_PK")
     @SequenceGenerator(name = "APP_USER_PK", sequenceName = "APP_USER_SEQ", allocationSize = 1)
@@ -23,6 +26,15 @@ public class User {
             joinColumns = {@JoinColumn(name = "USER_ID", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "AUTHORITY", referencedColumnName = "AUTHORITY_NAME")})
     private Set<Authority> authorities = new HashSet<>();
+
+    public User() {
+    }
+
+    public User(Long id) {
+        this.id=id;
+    }
+
+
 
     public Long getId() {
         return id;

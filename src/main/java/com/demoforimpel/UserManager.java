@@ -1,5 +1,6 @@
 package com.demoforimpel;
 
+import com.demoforimpel.data.CustomUserDetails;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,5 +17,12 @@ public class UserManager {
         else if (principal instanceof String)
             login = principal.toString();
         return login;
+    }
+
+    public static Long currentUserId() {
+        Authentication authentication = authentication();
+        if (authentication.getPrincipal() instanceof CustomUserDetails)
+            return ((CustomUserDetails) authentication.getPrincipal()).getId();
+        throw new SecurityException("Not a Valid Authentication to Find User-Id");
     }
 }

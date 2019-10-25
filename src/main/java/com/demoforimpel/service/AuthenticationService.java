@@ -5,4 +5,6 @@ import com.demoforimpel.data.LoginInfo;
 
 public interface AuthenticationService {
     AccountInfo authenticate(LoginInfo loginInfo);
+
+    void logout();
 }

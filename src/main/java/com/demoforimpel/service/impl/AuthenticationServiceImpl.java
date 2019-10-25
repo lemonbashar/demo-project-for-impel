@@ -37,4 +37,9 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         }
         return null;
     }
+
+    @Override
+    public void logout() {
+        tokenProvider.logout();
+    }
 }
