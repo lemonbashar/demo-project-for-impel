@@ -5,7 +5,6 @@ import com.demoforimpel.data.props.ApplicationProperties;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -30,8 +29,7 @@ public class TokenProvider {
     private long tokenValidityInMilliseconds;
     private long tokenValidityInMillisecondsForRememberMe;
 
-    @Autowired
-    private ApplicationProperties applicationProperties;
+    private final ApplicationProperties applicationProperties;
 
     public TokenProvider(ApplicationProperties applicationProperties) {
         this.applicationProperties = applicationProperties;

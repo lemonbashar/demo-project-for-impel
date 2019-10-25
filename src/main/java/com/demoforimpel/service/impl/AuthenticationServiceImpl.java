@@ -12,10 +12,14 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AuthenticationServiceImpl implements AuthenticationService {
-    @Autowired
-    private TokenProvider tokenProvider;
-    @Autowired
-    private AuthenticationManager authenticationManager;
+    private final TokenProvider tokenProvider;
+    private final AuthenticationManager authenticationManager;
+
+    public AuthenticationServiceImpl(TokenProvider tokenProvider, AuthenticationManager authenticationManager) {
+        this.tokenProvider = tokenProvider;
+        this.authenticationManager = authenticationManager;
+    }
+
     @Override
     public String authenticate(LoginInfo loginInfo) {
         UsernamePasswordAuthenticationToken authenticationToken=new UsernamePasswordAuthenticationToken(loginInfo.getUsername(),loginInfo.getPassword());
