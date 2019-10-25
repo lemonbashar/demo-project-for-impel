@@ -3,7 +3,6 @@ package com.demoforimpel.config.db;
 import com.demoforimpel.data.props.ApplicationProperties;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -18,7 +17,6 @@ import org.springframework.transaction.PlatformTransactionManager;
 import javax.sql.DataSource;
 
 @Configuration
-
 @EnableJpaRepositories(basePackages = "com.demoforimpel.repository", entityManagerFactoryRef = "jpaManager")
 public class JpaConfig {
     static final String[] ANNOTATED_PACKAGES = {"com.demoforimpel.domain"};

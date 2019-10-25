@@ -1,6 +1,5 @@
 package com.demoforimpel.config.security;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
@@ -12,15 +11,20 @@ import java.io.IOException;
 
 @Component
 public class JWTFilter extends GenericFilter {
-    public static final String AUTHORIZATION_HEADER = "Authorization";
-    public static final String BEARER = "Bearer ";
+    private static final String AUTHORIZATION_HEADER = "Authorization";
+    private static final String BEARER = "Bearer ";
 
-    @Autowired
-    protected TokenProvider tokenProvider;
+    private final TokenProvider tokenProvider;
 
+    public JWTFilter(TokenProvider tokenProvider) {
+        this.tokenProvider = tokenProvider;
+    }
 
-    public static String findHeaderValue(HttpServletRequest httpServletRequest, String headerName) {
-        return httpServletRequest.getHeader(headerName);
+    private static String resolveBearer(String headerWithBearer) {
+        if (StringUtils.hasText(headerWithBearer) && headerWithBearer.startsWith(BEARER)) {
+            return headerWithBearer.substring(BEARER.length());
+        }
+        return null;
     }
 
     @Override
@@ -30,7 +34,11 @@ public class JWTFilter extends GenericFilter {
         resolveJWT(request, response, chain, jwt);
     }
 
-    protected void resolveJWT(ServletRequest request, ServletResponse response, FilterChain chain, String jwt) throws IOException, ServletException {
+    private String findHeaderValue(HttpServletRequest httpServletRequest, String headerName) {
+        return httpServletRequest.getHeader(headerName);
+    }
+
+    private void resolveJWT(ServletRequest request, ServletResponse response, FilterChain chain, String jwt) throws IOException, ServletException {
         if (StringUtils.hasText(jwt) && tokenProvider.validateToken(jwt)) {
             Authentication authentication = tokenProvider.getAuthentication(jwt);
             SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -38,15 +46,8 @@ public class JWTFilter extends GenericFilter {
         chain.doFilter(request, response);
     }
 
-    public static String resolveToken(HttpServletRequest httpServletRequest) {
+    private String resolveToken(HttpServletRequest httpServletRequest) {
         String bearer = findHeaderValue(httpServletRequest, AUTHORIZATION_HEADER);
         return resolveBearer(bearer);
-    }
-
-    public static String resolveBearer(String headerWithBearer) {
-        if (StringUtils.hasText(headerWithBearer) && headerWithBearer.startsWith(BEARER)) {
-            return headerWithBearer.substring(BEARER.length());
-        }
-        return null;
     }
 }

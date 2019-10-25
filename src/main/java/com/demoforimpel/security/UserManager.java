@@ -1,4 +1,4 @@
-package com.demoforimpel;
+package com.demoforimpel.security;
 
 import com.demoforimpel.data.CustomUserDetails;
 import org.springframework.security.core.Authentication;

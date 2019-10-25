@@ -4,11 +4,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * Token-Store store the client side public IP Address that's why from a specific ip address only one user
- * Can access only one login-access
- * that's why we use their public IP
- */
 @Entity
 @Table(name = "TOKEN_STORE")
 public class TokenStore implements Serializable {

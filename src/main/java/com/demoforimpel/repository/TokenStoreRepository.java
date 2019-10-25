@@ -8,8 +8,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.math.BigInteger;
-
 @Transactional
 @Repository
 public interface TokenStoreRepository extends JpaRepository<TokenStore,Long> {

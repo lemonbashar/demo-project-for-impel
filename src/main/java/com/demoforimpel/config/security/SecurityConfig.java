@@ -1,7 +1,6 @@
 package com.demoforimpel.config.security;
 
 import com.demoforimpel.service.security.CustomUserDetailsService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -17,12 +16,15 @@ import org.springframework.security.web.DefaultSecurityFilterChain;
 
 @Configuration
 public class SecurityConfig  extends WebSecurityConfigurerAdapter {
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-    @Autowired
-    private CustomUserDetailsService customUserDetailsService;
-    @Autowired
-    private SecurityConfigurerAdapter<DefaultSecurityFilterChain, HttpSecurity> securityConfigurerAdapter;
+    private final PasswordEncoder passwordEncoder;
+    private final CustomUserDetailsService customUserDetailsService;
+    private final SecurityConfigurerAdapter<DefaultSecurityFilterChain, HttpSecurity> securityConfigurerAdapter;
+
+    public SecurityConfig(PasswordEncoder passwordEncoder, CustomUserDetailsService customUserDetailsService, SecurityConfigurerAdapter<DefaultSecurityFilterChain, HttpSecurity> securityConfigurerAdapter) {
+        this.passwordEncoder = passwordEncoder;
+        this.customUserDetailsService = customUserDetailsService;
+        this.securityConfigurerAdapter = securityConfigurerAdapter;
+    }
 
     @Bean
     @Override

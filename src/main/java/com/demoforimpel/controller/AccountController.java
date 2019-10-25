@@ -6,7 +6,6 @@ import com.demoforimpel.data.LoginInfo;
 import com.demoforimpel.data.UserInfo;
 import com.demoforimpel.domain.User;
 import com.demoforimpel.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,8 +16,11 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api")
 public class AccountController {
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+
+    public AccountController(UserService userService) {
+        this.userService = userService;
+    }
 
     @PostMapping("/account-controller/create")
     public ResponseEntity<User> createUser(@RequestBody UserInfo userInfo) {

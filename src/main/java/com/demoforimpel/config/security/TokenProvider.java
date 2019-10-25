@@ -86,7 +86,7 @@ public class TokenProvider {
         return token;
     }
 
-    public Authentication getAuthentication(String token) {
+    Authentication getAuthentication(String token) {
         Claims claims = Jwts.parser()
                 .setSigningKey(key)
                 .parseClaimsJws(token)
@@ -103,13 +103,13 @@ public class TokenProvider {
         return new UsernamePasswordAuthenticationToken(principal, token, authorities);
     }
 
-    public boolean validateToken(String authToken) {
+    boolean validateToken(String authToken) {
         TokenStore tokenStore=tokenStoreRepository.findByToken(authToken);
         return tokenStore!=null && tokenStore.getActive() && parseValidate(authToken);
     }
 
 
-    protected boolean parseValidate(String authToken) {
+    private boolean parseValidate(String authToken) {
         try {
             Jwts.parser().setSigningKey(key).parseClaimsJws(authToken);
             return true;

@@ -1,7 +1,6 @@
 package com.demoforimpel.data;
 
 import java.io.Serializable;
-import java.math.BigInteger;
 
 public class LoginInfo implements Serializable {
     private static final long serialVersionUID = 1L;
