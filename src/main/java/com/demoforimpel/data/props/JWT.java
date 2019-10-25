@@ -1,10 +1,10 @@
 package com.demoforimpel.data.props;
 
 public class JWT {
-    private String secret="TUFLSEpJRkhOQ0NEVUdWVVlFQkRDQ0JEVUNHVklERE9GQ0JEQ1VJNEVUdWVVlFQkRDQ0JEVUNHVklERE9GQ0JEQ1VJNEVUdWVVlFQkRDQ0JEVUNHVklERE9GQ0JEQ1VJ";
-    private String base64Secret="TUFLSEpJRkhOQ0NEVUdWVVlFQkRDQ0JEVUNHVklERE9GQ0JEQ1VJNDU2Nzg4NzVKSEdVWVY=NEVUdWVVlFQkRDQ0JEVUNHVklERE9GQ0JEQ1VJNDU2Nzg4NzVKSEdVWVY=NEVUdWVVlFQkRDQ0JEVUNHVklERE9GQ0JEQ1VJNDU2Nzg4NzVKSEdVWVY=";
-    private int tokenValidityInSeconds=30;
-    private int tokenValidityInSecondsForRememberMe=3600;
+    private String secret;
+    private String base64Secret;
+    private int tokenValidityInSeconds;
+    private int tokenValidityInSecondsForRememberMe;
 
     public String getSecret() {
         return secret;
