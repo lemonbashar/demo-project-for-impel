@@ -1,4 +1,4 @@
-package com.demoforimpel.config.props;
+package com.demoforimpel.data.props;
 
 public class Jpa {
     private String persistentUnit = "PU_DEMO_FOR_IMPEL";

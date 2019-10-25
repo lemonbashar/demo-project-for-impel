@@ -1,6 +1,6 @@
-package com.demoforimpel.config;
+package com.demoforimpel.config.props;
 
-import com.demoforimpel.config.props.ApplicationProperties;
+import com.demoforimpel.data.props.ApplicationProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;

@@ -2,9 +2,8 @@ application:
   database:
     database-type: POSTGRESQL
     url: jdbc:postgresql://192.168.0.151:5432/demoforimpel
-    schema: demoforimpel
-    username: demoforimpel
-    password: demoforimpel
+    username: lemon
+    password: lemon
     driver: org.postgresql.Driver
-    hibernate:
-      dialect: org.hibernate.dialect.PostgreSQL82Dialect
+    hbm2-ddl-auto: update
+    dialect: org.hibernate.dialect.PostgreSQL82Dialect
