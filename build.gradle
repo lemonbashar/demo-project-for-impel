@@ -24,10 +24,11 @@ dependencies {
 	implementation 'io.jsonwebtoken:jjwt-impl:0.10.5'
 
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
-	testImplementation('org.springframework.boot:spring-boot-starter-test') {
-		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-	}
-	testImplementation 'org.springframework.security:spring-security-test'
+
+
+	testImplementation('org.springframework.boot:spring-boot-starter-test')
+	testImplementation('com.jayway.jsonpath:json-path:2.0.0')
+	testImplementation('com.jayway.jsonpath:json-path-assert:2.0.0')
 }
 
 test {
