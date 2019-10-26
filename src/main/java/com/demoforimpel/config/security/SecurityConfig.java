@@ -46,24 +46,23 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-                .csrf()
-                .disable()
-                .addFilterBefore(corsFilter, UsernamePasswordAuthenticationFilter.class)
-                .exceptionHandling()
-                .and()
-                .headers()
-                .frameOptions()
-                .disable()
-                .and()
-                .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
-                .authorizeRequests()
-                .mvcMatchers(HttpMethod.POST, "/api/account-controller/create/**").permitAll()
-                .mvcMatchers(HttpMethod.POST, "/api/account-controller/login/**").permitAll()
-                .anyRequest().authenticated()
-                .and().apply(securityConfigurerAdapter);
+        http.csrf()
+            .disable()
+            .addFilterBefore(corsFilter, UsernamePasswordAuthenticationFilter.class)
+            .exceptionHandling()
+            .and()
+            .headers()
+            .frameOptions()
+            .disable()
+            .and()
+            .sessionManagement()
+            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            .and()
+            .authorizeRequests()
+            .mvcMatchers(HttpMethod.POST, "/api/account-controller/create/**").permitAll()
+            .mvcMatchers(HttpMethod.POST, "/api/account-controller/login/**").permitAll()
+            .anyRequest().authenticated()
+            .and().apply(securityConfigurerAdapter);
     }
 
     @Bean
