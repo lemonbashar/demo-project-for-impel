@@ -1,6 +1,10 @@
 package com.demoforimpel.data;
 
-public class AccountInfo {
+import java.io.Serializable;
+
+public class AccountInfo implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     private String username;
     private boolean authenticated;
     private String[] authorities;

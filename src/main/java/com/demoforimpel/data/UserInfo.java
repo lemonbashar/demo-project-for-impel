@@ -1,8 +1,11 @@
 package com.demoforimpel.data;
 
+import java.io.Serializable;
 import java.util.Set;
 
-public class UserInfo {
+public class UserInfo implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     private String username;
     private String password;
     private Set<String> authorities;
