@@ -6,7 +6,7 @@ import com.demoforimpel.data.props.ApplicationProperties;
 import com.demoforimpel.domain.TokenStore;
 import com.demoforimpel.domain.User;
 import com.demoforimpel.repository.TokenStoreRepository;
-import com.demoforimpel.security.UserManager;
+import com.demoforimpel.security.SecurityManager;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -106,7 +106,7 @@ public class TokenProvider {
     }
 
     public void logout() {
-        tokenStoreRepository.deactivateAll(UserManager.currentUserId());
+        tokenStoreRepository.deactivateAll(SecurityManager.currentUserId());
         SecurityContextHolder.clearContext();
     }
 }

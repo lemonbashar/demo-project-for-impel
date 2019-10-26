@@ -4,7 +4,7 @@ import com.demoforimpel.data.AccountInfo;
 import com.demoforimpel.data.LoginInfo;
 import com.demoforimpel.data.UserInfo;
 import com.demoforimpel.domain.User;
-import com.demoforimpel.security.UserManager;
+import com.demoforimpel.security.SecurityManager;
 import com.demoforimpel.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -42,6 +42,6 @@ public class AccountController {
 
     @GetMapping("/account-controller/jwt-test")
     public String jwtTest() {
-        return UserManager.currentUsername();
+        return SecurityManager.currentUsername();
     }
 }

@@ -5,10 +5,11 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 
-public class UserManager {
+public class SecurityManager {
     private static Authentication authentication() {
         return SecurityContextHolder.getContext().getAuthentication();
     }
+
     public static String currentUsername() {
         Object principal = authentication().getPrincipal();
         String login = null;
