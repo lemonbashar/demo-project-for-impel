@@ -14,10 +14,6 @@ public interface TokenStoreRepository extends JpaRepository<TokenStore,Long> {
     @Query("SELECT tokenStore FROM TokenStore tokenStore WHERE tokenStore.token=:token")
     TokenStore findByToken(@Param("token") String token);
 
-    @Query("SELECT model FROM TokenStore model WHERE model.user.id=:userId")
-    TokenStore findByUserId(@Param("userId") Long userId);
-
-
     @Modifying
     @Transactional
     @Query("UPDATE TokenStore tokenStore SET tokenStore.active=false WHERE tokenStore.user.id=:userId AND tokenStore.active=true")

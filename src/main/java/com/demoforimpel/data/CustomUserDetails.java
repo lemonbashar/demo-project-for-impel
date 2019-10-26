@@ -17,17 +17,6 @@ public class CustomUserDetails implements UserDetails {
     private boolean enabled;
     private Set<? extends GrantedAuthority> grantedAuthorities;
 
-    public CustomUserDetails(Long id, String username, String password, Set<? extends GrantedAuthority> grantedAuthorities) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.grantedAuthorities = grantedAuthorities;
-        this.accountNonExpired = true;
-        this.accountNonLocked = true;
-        this.credentialsNonExpired = true;
-        this.enabled = true;
-    }
-
     public CustomUserDetails(Long id, String username, String password, boolean enabled, Set<? extends GrantedAuthority> grantedAuthorities) {
         this.id = id;
         this.username = username;
