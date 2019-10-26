@@ -10,7 +10,7 @@ public class Database {
     private boolean formatSQL = true;
     private boolean showSql = true;
     private Jpa jpa = new Jpa();
-    private DatabaseType databaseType=DatabaseType.POSTGRESQL;
+    private DatabaseType databaseType;
     private boolean generateDDL=true;
 
     public String getUrl() {

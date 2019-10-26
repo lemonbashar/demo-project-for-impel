@@ -2,9 +2,8 @@ package com.demoforimpel.data.props;
 
 public class JWT {
     private String secret;
-    private String base64Secret;
-    private int tokenValidityInSeconds;
-    private int tokenValidityInSecondsForRememberMe;
+    private int tokenValidityInSeconds=20;
+    private int tokenValidityInSecondsForRememberMe=40;
 
     public String getSecret() {
         return secret;
@@ -12,14 +11,6 @@ public class JWT {
 
     public void setSecret(String secret) {
         this.secret = secret;
-    }
-
-    public String getBase64Secret() {
-        return base64Secret;
-    }
-
-    public void setBase64Secret(String base64Secret) {
-        this.base64Secret = base64Secret;
     }
 
     public int getTokenValidityInSeconds() {

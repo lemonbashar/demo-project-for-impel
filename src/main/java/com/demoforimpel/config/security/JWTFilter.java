@@ -21,10 +21,7 @@ public class JWTFilter extends GenericFilter {
     }
 
     private static String resolveBearer(String headerWithBearer) {
-        if (StringUtils.hasText(headerWithBearer) && headerWithBearer.startsWith(BEARER)) {
-            return headerWithBearer.substring(BEARER.length());
-        }
-        return null;
+        return StringUtils.hasText(headerWithBearer) && headerWithBearer.startsWith(BEARER)? headerWithBearer.substring(BEARER.length()) : null ;
     }
 
     @Override
