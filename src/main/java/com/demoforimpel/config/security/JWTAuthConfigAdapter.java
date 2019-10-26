@@ -9,8 +9,11 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class JWTAuthConfigAdapter extends SecurityConfigurerAdapter<DefaultSecurityFilterChain, HttpSecurity> {
-    @Autowired
-    private JWTFilter jwtFilter;
+    private final JWTFilter jwtFilter;
+
+    public JWTAuthConfigAdapter(JWTFilter jwtFilter) {
+        this.jwtFilter = jwtFilter;
+    }
 
     @Override
     public void configure(HttpSecurity builder) throws Exception {

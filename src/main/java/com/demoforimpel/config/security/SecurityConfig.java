@@ -18,18 +18,20 @@ import org.springframework.security.web.DefaultSecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.filter.CorsFilter;
 
-@SuppressWarnings("SpringJavaAutowiredFieldsWarningInspection")
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig  extends WebSecurityConfigurerAdapter {
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-    @Autowired
-    private CustomUserDetailsService customUserDetailsService;
-    @Autowired
-    private SecurityConfigurerAdapter<DefaultSecurityFilterChain, HttpSecurity> securityConfigurerAdapter;
-    @Autowired
-    private CorsFilter corsFilter;
+    private final PasswordEncoder passwordEncoder;
+    private final CustomUserDetailsService customUserDetailsService;
+    private final SecurityConfigurerAdapter<DefaultSecurityFilterChain, HttpSecurity> securityConfigurerAdapter;
+    private final CorsFilter corsFilter;
+
+    public SecurityConfig(PasswordEncoder passwordEncoder, CustomUserDetailsService customUserDetailsService, SecurityConfigurerAdapter<DefaultSecurityFilterChain, HttpSecurity> securityConfigurerAdapter, CorsFilter corsFilter) {
+        this.passwordEncoder = passwordEncoder;
+        this.customUserDetailsService = customUserDetailsService;
+        this.securityConfigurerAdapter = securityConfigurerAdapter;
+        this.corsFilter = corsFilter;
+    }
 
 
     @Bean
@@ -62,11 +64,6 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
             .mvcMatchers(HttpMethod.POST, "/api/account-controller/login/**").permitAll()
             .anyRequest().authenticated()
             .and().apply(securityConfigurerAdapter);
-    }
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
     }
 
 }
