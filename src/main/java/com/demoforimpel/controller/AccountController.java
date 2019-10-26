@@ -1,10 +1,10 @@
 package com.demoforimpel.controller;
 
-import com.demoforimpel.UserManager;
 import com.demoforimpel.data.AccountInfo;
 import com.demoforimpel.data.LoginInfo;
 import com.demoforimpel.data.UserInfo;
 import com.demoforimpel.domain.User;
+import com.demoforimpel.security.UserManager;
 import com.demoforimpel.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,6 +32,7 @@ public class AccountController {
         }
         return user==null?ResponseEntity.badRequest().body(null):ResponseEntity.ok(user);
     }
+
 
     @PostMapping("/account-controller/login")
     public ResponseEntity<AccountInfo> login(@RequestBody LoginInfo loginInfo) {

@@ -1,12 +1,12 @@
 package com.demoforimpel.config.security;
 
-import com.demoforimpel.UserManager;
 import com.demoforimpel.data.CustomUserDetails;
 import com.demoforimpel.data.LoginInfo;
 import com.demoforimpel.data.props.ApplicationProperties;
 import com.demoforimpel.domain.TokenStore;
 import com.demoforimpel.domain.User;
 import com.demoforimpel.repository.TokenStoreRepository;
+import com.demoforimpel.security.UserManager;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
